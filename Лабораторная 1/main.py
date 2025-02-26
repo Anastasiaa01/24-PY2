@@ -1,4 +1,7 @@
 # TODO Написать 3 класса с документацией и аннотацией типов
+import doctest
+
+
 class Triangle:
     def __init__(self, first_side: (int, float), second_side: (int, float), third_side: (int, float)):
         """
@@ -37,6 +40,7 @@ class Triangle:
         >>> triangle = Triangle(10, 5, 15)
         >>> triangle.is_equilateral()
         """
+
     def is_exists(self) -> bool:
         """
         Функция которая проверяет существует ли треугольник с текущими сторонами
@@ -44,9 +48,10 @@ class Triangle:
         :return: Cуществует ли треугольник с текущими сторонами
 
         Примеры:
-        >>> triangle = Triangle(10, 1, 15)
+        >>> triangle = Triangle(10, 5, 15)
         >>> triangle.is_exists()
         """
+
 
 class Person:
     def __init__(self, name: str, age: int):
@@ -78,6 +83,7 @@ class Person:
         >>> person = Person('Misha', 30)
         >>> person.is_adult()
         """
+
     def information(self) -> str:
         """
         Функция которая формирует строку с информацией о человеке (имя и возраст)
@@ -88,6 +94,7 @@ class Person:
         >>> person = Person('Misha', 30)
         >>> person.information()
         """
+
 
 class Budget:
     def __init__(self, money: (int, float)):
@@ -138,10 +145,14 @@ class Budget:
 
         if not isinstance(value, (int, float)):
             raise TypeError("Введенная сумма должна быть типа int или float")
+
+        if value > self.money:
+            raise ValueError("Введенная сумма не может превышать текущий бюджет")
+
         if value < 0:
             raise ValueError("Введенная сумма должна положительным числом")
 
 
 if __name__ == "__main__":
     # TODO работоспособность экземпляров класса проверить с помощью doctest
-    pass
+    doctest.testmod()
